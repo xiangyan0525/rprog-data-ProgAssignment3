@@ -13,26 +13,26 @@ best <- function(state,outname){
 		stop("invalid outcome")
 	}
 	
-	#Return hospital name in that state with lowest 30-day death rate
+# 	Return hospital name in that state with lowest 30-day death rate
 	if(outname=="heart attack"){
 	    subdata <- subset(data,State == state)
 	    subdata <- subdata[complete.cases(subdata[,11]),]
-        a <-as.numeric(subdata[,11])
-        m1 <- subdata[order(-a,subdata[,2]),]
-        m1[1,2]
+	    a<- as.numeric(subdata[,11])
+        m <- subdata[order(a,subdata[,2]),]
+        m[1,2]
 	}
-#     if(outname=="heart failure"){
-#         subdata <- subset(data,State == state)
-#         subdata <- subdata[complete.cases(subdata[,17]),]
-#         b <-as.numeric(subdata[,17])
-#         m2 <- subdata[order(-b,subdata[,2]),]
-#         m2[1,2]
-#     }
-#     if(outname=="pneumonia"){
-#         subdata <- subset(data,State == state)
-#         subdata <- subdata[complete.cases(subdata[,23]),]
-#         c <-as.numeric(subdata[,23])
-#         m3 <- subdata[order(-c,subdata[,2]),]
-#         m3[1,2]
-#     }
+    else if(outname=="heart failure"){
+        subdata <- subset(data,State == state)
+        subdata <- subdata[complete.cases(subdata[,17]),]
+        a <- as.numeric(subdata[,17])
+        m <- subdata[order(a,subdata[,2]),]
+        m[1,2]
+    }
+    else if(outname=="pneumonia"){
+        subdata <- subset(data,State == state)
+        subdata <- subdata[complete.cases(subdata[,23]),]
+        a <-as.numeric(subdata[,23])
+        m <- subdata[order(a,subdata[,2]),]
+        m[1,2]
+    }
 }
